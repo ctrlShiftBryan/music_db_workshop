@@ -76,8 +76,12 @@ Some queries work better without them
 
 Schema's are meant for reuse
 
+## associations
+Used to model relationships between schema's and therefore structs
+
+  - belongs_to :name, Struct (the one with the FK)
+  - has_many :name, Struct
 
 
-
-
+  - many_to_many - not parent child relationship
 

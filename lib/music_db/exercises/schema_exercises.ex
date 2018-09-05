@@ -25,7 +25,6 @@ defmodule MusicDB.Exercises.SchemaExercises do
 
   def delete_an_album!(album) do
     # Use Repo.delete to delete the album
-    album |> IO.inspect()
     Repo.delete!(album)
   end
 end

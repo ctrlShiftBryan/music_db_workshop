@@ -11,6 +11,8 @@ defmodule MusicDB.Album do
     has_many(:tracks, Track)
     many_to_many(:genres, Genre, join_through: "albums_genres")
 
+    # on delete is actually be handing by the database
+    has_many(:releases, Release, on_delete: :nothing)
   end
 
   def changeset(album, params) do
