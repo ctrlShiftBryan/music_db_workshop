@@ -29,7 +29,8 @@ defmodule MusicDB.MixProject do
   defp deps do
     [
       {:postgrex, ">= 0.0.0"},
-      {:ecto, "~> 2.2"}
+      {:ecto, "~> 2.2"},
+      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false}
     ]
   end
 
@@ -40,5 +41,4 @@ defmodule MusicDB.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
-
 end

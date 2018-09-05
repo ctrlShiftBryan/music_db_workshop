@@ -12,6 +12,6 @@ defmodule MusicDB.Repo do
     # function to see what to use instead of :max
     # https://hexdocs.pm/ecto/Ecto.Repo.html#c:aggregate/4
 
+    aggregate(table_name, :count, :id)
   end
-
 end
