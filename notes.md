@@ -69,5 +69,15 @@ q = from t in "tracks",
   select: [a.title, t.title]
 ```
 
+## Schemas
+
+### schema's not necessary query api can be used without schema's
+Some queries work better without them
+
+Schema's are meant for reuse
+
+
+
+
 
 
