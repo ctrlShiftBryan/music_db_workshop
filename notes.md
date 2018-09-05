@@ -42,3 +42,32 @@ Don't call Repo module directly instead use Ecto.Repo and create your own applic
 
 
 
+## Queries
+
+### Keyword (LINQ) vs Macro (Lambda) syntax
+```
+query = from "artist", select: [:name]
+Ecto.Adapters.SQL.to_sql(:all, Repo, query)
+```
+
+### query bindings
+- like
+- is_nil
+- not is_nil
+- ago
+
+### sql functions
+- fragment("lower(?)", a.name)
+- select: [t.album_id, sum(t.number_of_plays)], group_by: t.album_id
+
+
+### joins
+```
+q = from t in "tracks",
+  join: a in "albums", on: t.album_id == a.id,
+  where: t.durection > 900,
+  select: [a.title, t.title]
+```
+
+
+

@@ -4,6 +4,8 @@ use Mix.Config
 whoami = String.replace(whoami, "\n", "")
 
 config :music_db, MusicDB.Repo,
+  # loggers: [{Ecto.LogEntry, :log, [:error]}],
+  loggers: [],
   adapter: Ecto.Adapters.Postgres,
   database: "music_db_workshop_test",
   username: System.get_env("DATABASE_USERNAME") || whoami,
@@ -11,4 +13,3 @@ config :music_db, MusicDB.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   ownership_timeout: 60_000
-
