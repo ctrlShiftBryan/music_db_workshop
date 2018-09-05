@@ -85,3 +85,22 @@ Used to model relationships between schema's and therefore structs
 
   - many_to_many - not parent child relationship
 
+## changesets
+
+- cast/filter (creating the changeset)
+  - .change for internal data
+  - .cast for external data
+- validate (make sure data is correct)
+  - validate_change(field, anon function that returns [] or [field: "error msg"])
+- execute
+  - Repo.insert or Repo.update will check for valid? and return {:ok, record} or {:error, record}
+
+### associations
+
+#### Ecto.build_assoc
+
+#### Changing all child records at once
+- put_assoc - interal data
+- cast_assoc - external data
+
+

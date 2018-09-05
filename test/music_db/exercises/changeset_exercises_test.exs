@@ -3,13 +3,11 @@ defmodule ChangesetExercisesTest do
   alias MusicDB.Exercises.ChangesetExercises
   alias MusicDB.{Artist, Album, Track}
 
-  @tag :skip
   test "create a changeset from an Artist struct" do
     changeset = ChangesetExercises.create_changeset_for_artist(%Artist{})
     assert changeset.changes == %{name: "Sarah Vaughan"}
   end
 
-  @tag :skip
   test "create a changeset from a map" do
     params = %{name: "Bobby Hutcherson", birth_date: "1941-01-27", instrument: "vibraphone"}
     changeset = ChangesetExercises.create_changeset_from_map(params)
@@ -17,7 +15,6 @@ defmodule ChangesetExercisesTest do
     assert changeset.changes == %{name: "Bobby Hutcherson", birth_date: ~D[1941-01-27]}
   end
 
-  @tag :skip
   test "create changeset for Track" do
     valid_params = %{title: "Walkin'", duration: 896}
     changeset = ChangesetExercises.changeset_for_track(%Track{}, valid_params)
@@ -38,7 +35,6 @@ defmodule ChangesetExercisesTest do
     assert Keyword.keys(changeset.errors) == [:duration]
   end
 
-  @tag :skip
   test "create a child record with build_assoc" do
     artist = Repo.insert!(%Artist{name: "Esperanza Spalding"})
     album = ChangesetExercises.create_album_for_artist(artist, "Jujo")
@@ -48,7 +44,6 @@ defmodule ChangesetExercisesTest do
     assert {:ok, _album} = Repo.insert(album)
   end
 
-  @tag :skip
   test "create child records with put_assoc" do
     artist = Repo.insert!(%Artist{name: "Gene Harris"})
     album1 = %Album{title: "Like A Lover"}
@@ -58,12 +53,11 @@ defmodule ChangesetExercisesTest do
     assert {:ok, artist} = Repo.update(changeset)
     artist = Repo.preload(artist, :albums)
     assert Enum.count(artist.albums) == 2
-    titles = Enum.map(artist.albums, &(Map.get(&1, :title)))
+    titles = Enum.map(artist.albums, &Map.get(&1, :title))
     assert Enum.member?(titles, "Like A Lover")
     assert Enum.member?(titles, "In His Hands")
   end
 
-  @tag :skip
   test "create child records with cast_assoc" do
     artist = Repo.insert!(%Artist{name: "Gene Harris"})
     albums = [%{"title" => "Like A Lover"}, %{"title" => "In His Hands"}]
@@ -72,9 +66,8 @@ defmodule ChangesetExercisesTest do
     assert {:ok, artist} = Repo.update(changeset)
     artist = Repo.preload(artist, :albums)
     assert Enum.count(artist.albums) == 2
-    titles = Enum.map(artist.albums, &(Map.get(&1, :title)))
+    titles = Enum.map(artist.albums, &Map.get(&1, :title))
     assert Enum.member?(titles, "Like A Lover")
     assert Enum.member?(titles, "In His Hands")
   end
-
 end

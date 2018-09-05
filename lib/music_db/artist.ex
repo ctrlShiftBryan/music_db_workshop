@@ -10,8 +10,8 @@ defmodule MusicDB.Artist do
     timestamps()
 
     has_many(:albums, Album, on_replace: :nilify)
-    has_many(:tracks, through: [:albums, :tracks])
 
+    has_many(:tracks, through: [:albums, :tracks])
   end
 
   def changeset(artist, params) do
