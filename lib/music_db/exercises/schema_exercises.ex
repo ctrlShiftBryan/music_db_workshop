@@ -12,6 +12,7 @@ defmodule MusicDB.Exercises.SchemaExercises do
     query =
       from(a in Artist,
         where: a.birth_date >= ^Ecto.Date.cast!("1990-11-15")
+        # , select: [:id]
       )
 
     Repo.all(query)
@@ -24,6 +25,7 @@ defmodule MusicDB.Exercises.SchemaExercises do
 
   def delete_an_album!(album) do
     # Use Repo.delete to delete the album
+    album |> IO.inspect()
     Repo.delete!(album)
   end
 end
